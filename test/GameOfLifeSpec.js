@@ -14,6 +14,11 @@ describe('GameOfLife', function () {
 		it('should kill a single cell', function () {
 			var result = gameOfLife.evolve([[1]]);
 			assert.deepEqual([[0]], result);
+		});
+		
+		it('should handle multiple columns and rows', function () {
+			var result = gameOfLife.evolve([[0, 1], [0, 0]]);
+			assert.deepEqual([[0, 0], [0, 0]], result);
 		})
 	});
 });

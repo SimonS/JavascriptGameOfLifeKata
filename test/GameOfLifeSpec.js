@@ -6,9 +6,14 @@ var gameOfLife = require('../lib/GameOfLife');
 
 describe('GameOfLife', function () {
 	describe('#evolve', function () {
-		it('should return a blank grid when given a blank grid', function () {
-			var result = gameOfLife.evolve([[0, 0], [0, 0]]);
-			assert.deepEqual([[0, 0], [0, 0]], result);
+		it('should return a dead grid when given a dead grid', function () {
+			var result = gameOfLife.evolve([[0]]);
+			assert.deepEqual([[0]], result);
 		});
+		
+		it('should kill a single cell', function () {
+			var result = gameOfLife.evolve([[1]]);
+			assert.deepEqual([[0]], result);
+		})
 	});
 });

@@ -17,23 +17,64 @@ describe('GameOfLife', function () {
 		});
 		
 		it('should handle multiple columns and rows', function () {
-			var result = gameOfLife.evolve([[0, 1], [0, 0]]);
-			assert.deepEqual([[0, 0], [0, 0]], result);
+			var result = gameOfLife.evolve([[0, 1], 
+											[0, 0]]);
+			assert.deepEqual([[0, 0], 
+							  [0, 0]], result);
 		});
 
 		it('should persist two neighbour cells horizontally', function () {
-			var result = gameOfLife.evolve([[0, 0, 0], [1, 1, 1], [0, 0, 0]]);
-			assert.deepEqual([[0, 0, 0], [0, 1, 0], [0, 0, 0]], result);
+			var result = gameOfLife.evolve([[0, 0, 0], 
+											[1, 1, 1], 
+											[0, 0, 0]]);
+			assert.deepEqual([[0, 1, 0], 
+							  [0, 1, 0], 
+							  [0, 1, 0]], result);
 		});
 		
 		it('should persist two neighbour cells vertically', function () {
-			var result = gameOfLife.evolve([[0, 1, 0], [0, 1, 0], [0, 1, 0]]);
-			assert.deepEqual([[0, 0, 0], [0, 1, 0], [0, 0, 0]], result);
+			var result = gameOfLife.evolve([[0, 1, 0], 
+											[0, 1, 0], 
+											[0, 1, 0]]);
+			assert.deepEqual([[0, 0, 0], 
+							  [1, 1, 1], 
+							  [0, 0, 0]], result);
 		});
 		
 		it('should only persist if it is alive in the first place', function () {
-			var result = gameOfLife.evolve([[0, 1, 0], [0, 0, 0], [0, 1, 0]]);
-			assert.deepEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]], result);
+			var result = gameOfLife.evolve([[0, 1, 0], 
+											[0, 0, 0], 
+											[0, 1, 0]]);
+			assert.deepEqual([[0, 0, 0], 
+							  [0, 0, 0], 
+							  [0, 0, 0]], result);
+		});
+		
+		it('should persist 3 neighboured cells', function () {
+			var result = gameOfLife.evolve([[0, 1, 0], 
+											[1, 1, 0], 
+											[0, 1, 0]]);
+			assert.deepEqual([[1, 1, 0], 
+							  [1, 1, 1], 
+							  [1, 1, 0]], result);
+		});
+		
+		it('should resurrect 3-neighboured cells', function () {
+			var result = gameOfLife.evolve([[0, 1, 0], 
+											[1, 0, 0], 
+											[0, 1, 0]]);
+			assert.deepEqual([[0, 0, 0], 
+							  [1, 1, 0], 
+							  [0, 0, 0]], result);
+		});
+		
+		it('should work with diagonals', function () {
+			var result = gameOfLife.evolve([[0, 1, 0], 
+											[1, 1, 0], 
+											[0, 0, 0]]);
+			assert.deepEqual([[1, 1, 0], 
+							  [1, 1, 0], 
+							  [0, 0, 0]], result);
 		});
 	});
 });

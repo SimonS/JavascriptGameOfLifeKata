@@ -19,6 +19,16 @@ describe('GameOfLife', function () {
 		it('should handle multiple columns and rows', function () {
 			var result = gameOfLife.evolve([[0, 1], [0, 0]]);
 			assert.deepEqual([[0, 0], [0, 0]], result);
-		})
+		});
+
+		it('should persist two neighbour cells horizontally', function () {
+			var result = gameOfLife.evolve([[0, 0, 0], [1, 1, 1], [0, 0, 0]]);
+			assert.deepEqual([[0, 0, 0], [0, 1, 0], [0, 0, 0]], result);
+		});
+		
+		it('should persist two neighbour cells vertically', function () {
+			var result = gameOfLife.evolve([[0, 1, 0], [0, 1, 0], [0, 1, 0]]);
+			assert.deepEqual([[0, 0, 0], [0, 1, 0], [0, 0, 0]], result);
+		});
 	});
 });

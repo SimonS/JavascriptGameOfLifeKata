@@ -76,5 +76,16 @@ describe('GameOfLife', function () {
 							  [1, 1, 0], 
 							  [0, 0, 0]], result);
 		});
+		
+		it('should persist blocks', function () {
+			var result = gameOfLife.evolve([[0, 0, 0, 0], 
+											[0, 1, 1, 0], 
+											[0, 1, 1, 0], 
+											[0, 0, 0, 0]]);
+			assert.deepEqual([[0, 0, 0, 0], 
+							  [0, 1, 1, 0], 
+							  [0, 1, 1, 0], 
+							  [0, 0, 0, 0]], result);
+		});
 	});
 });

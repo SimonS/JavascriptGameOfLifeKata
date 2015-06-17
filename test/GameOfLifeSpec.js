@@ -30,5 +30,10 @@ describe('GameOfLife', function () {
 			var result = gameOfLife.evolve([[0, 1, 0], [0, 1, 0], [0, 1, 0]]);
 			assert.deepEqual([[0, 0, 0], [0, 1, 0], [0, 0, 0]], result);
 		});
+		
+		it('should only persist if it is alive in the first place', function () {
+			var result = gameOfLife.evolve([[0, 1, 0], [0, 0, 0], [0, 1, 0]]);
+			assert.deepEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]], result);
+		});
 	});
 });

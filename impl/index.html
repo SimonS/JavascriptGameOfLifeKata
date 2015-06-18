@@ -3,51 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Conway's Game of Life</title>
-		<script>
-			var container;
-			
-			function generateGrid(rows, cols) {
-				var workspace = document.createElement('fieldset');
-				for (var r = 0; r < rows; r++) {
-					var row = document.createElement('div');
-					row.className = 'row';
-
-					for (var c = 0; c < cols; c++) {
-						var checkbox = document.createElement('input');
-						checkbox.type = 'checkbox';
-						row.appendChild(checkbox);
-					}						
-					
-					workspace.appendChild(row);
-				}
-				
-				return workspace;
-			}
-			
-			document.addEventListener('DOMContentLoaded', function (e) {
-				container = document.querySelector('#game_of_life');
-				container.appendChild(generateGrid(10, 10));
-				
-				document.getElementById('reset_gol').addEventListener('submit', function (e) {
-					e.preventDefault();
-					
-					container.innerHTML = '';
-					
-					var rows = document.querySelector('#rows')['value'];
-					var cols = document.querySelector('#columns')['value'];
-					
-					container.appendChild(generateGrid(rows, cols));
-				});
-				
-				document.getElementById('next').addEventListener('click', function (e) {
-					e.preventDefault();
-					
-					// formToGrid
-					// GameOfLife.evolve();
-					// gridToForm
-				});
-			});
-		</script>
+		<script src="../lib/GoL_Compiled.js"></script>
+		
 	</head>
 	<body>
 		<h1>Conway's Game of Life</h1>

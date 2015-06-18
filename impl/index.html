@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Conway's Game of Life</title>
+		<script>
+			var container;
+			
+			function generateGrid(rows, cols) {
+				var workspace = document.createElement('fieldset');
+				for (var r = 0; r < rows; r++) {
+					var row = document.createElement('div');
+					row.className = 'row';
+
+					for (var c = 0; c < cols; c++) {
+						var checkbox = document.createElement('input');
+						checkbox.type = 'checkbox';
+						row.appendChild(checkbox);
+					}						
+					
+					workspace.appendChild(row);
+				}
+				
+				return workspace;
+			}
+			
+			document.addEventListener('DOMContentLoaded', function (e) {
+				container = document.querySelector('#game_of_life');
+				container.appendChild(generateGrid(10, 10));
+				
+				document.getElementById('reset_gol').addEventListener('submit', function (e) {
+					e.preventDefault();
+					
+					container.innerHTML = '';
+					
+					var rows = document.querySelector('#rows')['value'];
+					var cols = document.querySelector('#columns')['value'];
+					
+					container.appendChild(generateGrid(rows, cols));
+				});
+				
+				document.getElementById('next').addEventListener('click', function (e) {
+					e.preventDefault();
+					
+					// formToGrid
+					// GameOfLife.evolve();
+					// gridToForm
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Conway's Game of Life</h1>
+		<form id="reset_gol">
+			<fieldset>
+				<label for="columns">Columns:</label>
+				<input name="columns" id="columns" type="number" value="10" />
+				<label for="rows">Rows:</label>
+				<input name="rows" id="rows" type="number" value="10" />
+				<input type="submit" value="Generate" id="generate">
+			</fieldset>
+		</form>
+		<form id="game_of_life"></form>
+		<form id="control_panel">
+			<fieldset>
+				<input type="button" id="next" value="Next Generation">
+			</fieldset>
+		</form>
+	</body>
+
+</html>

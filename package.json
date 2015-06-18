@@ -2,7 +2,7 @@
   "name": "GameOfLifeKata",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "main": "impl/index.html",
   "dependencies": {
     "lodash": "^3.9.3",
     "mocha": "^2.2.5"
